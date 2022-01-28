@@ -917,3 +917,39 @@ img {
 		}
 	}
 }
+
+// responsive view
+
+@media (max-width: 1045px) {
+	:root {
+		--size: 30;
+	}
+}
+
+@media (max-width: 885px) {
+	:root {
+		--size: 23;
+	}
+}
+
+@media (max-width: 700px) {
+	:root {
+		--size: 20;
+	}
+}
+
+// potrait
+@media (max-width: 700px) {
+	:root {
+		--size: 30;
+	}
+
+	.desk__mat {
+		transform: rotate(90deg);
+		width: calc(1250 * var(--unit));
+		height: calc(480 * var(--unit));
+		position: fixed;
+		top: 35%;
+		left: -25%;
+	}
+}
