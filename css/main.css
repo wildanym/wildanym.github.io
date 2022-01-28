@@ -1711,19 +1711,4 @@ img {
     --size: 20;
   }
 }
-
-@media (max-width: 700px) {
-  :root {
-    --size: 30;
-  }
-  .desk__mat {
-    -webkit-transform: rotate(90deg);
-            transform: rotate(90deg);
-    width: calc(1250 * var(--unit));
-    height: calc(480 * var(--unit));
-    position: fixed;
-    top: 35%;
-    left: -25%;
-  }
-}
 /*# sourceMappingURL=main.css.map */
