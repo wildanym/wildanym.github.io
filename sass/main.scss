@@ -1,0 +1,919 @@
+:root {
+	--size: 35; //You can change the size here
+	--unit: calc((var(--size) / 242) * 1vmin);
+
+	// font style
+	color: rgb(51, 51, 51);
+	font-size: calc(12.5 * var(--unit));
+	font-family: "Zen Maru Gothic", sans-serif;
+	font-weight: 700;
+}
+
+// color set
+//keycaps white
+$base__white: #d1d1d1;
+$base__border_white: #838282;
+$base__shadow__white: #888484;
+$reflection__white: rgb(243, 243, 243) 47%;
+$top__white: linear-gradient(
+	90deg,
+	rgb(233, 233, 233) 0%,
+	rgb(247, 247, 247) 60%,
+	rgb(228, 228, 228) 100%
+);
+$top__border__white: #f3f3f3;
+$top__shadow__white: #f3f1f1d8;
+
+// keycaps Yellow
+$base__yellow: hsl(61, 78%, 55%);
+$base__border__yellow: #c0b239;
+$base__shadow__yellow: hsl(61, 61%, 41%);
+$reflection__yellow: #fffeae;
+$top__yellow: linear-gradient(
+	90deg,
+	hsl(58, 80%, 51%) 0%,
+	hsl(61, 100%, 50%) 50%,
+	hsl(58, 77%, 49%) 100%
+);
+$top__border__yellow: #fffd83;
+$top__shadow__yellow: #fff351;
+
+// keycaps red
+$base__red: hsl(0, 76%, 50%);
+$base__border__red: hsl(7, 79%, 39%);
+$base__shadow__red: hsl(7, 75%, 35%);
+$reflection__red: hsl(0, 81%, 60%);
+$top__red: linear-gradient(
+	90deg,
+	hsl(11, 84%, 45%) 0%,
+	hsl(0, 100%, 65%) 60%,
+	hsl(11, 78%, 52%) 100%
+);
+$top__border__red: hsl(0, 87%, 63%);
+$top__shadow__red: hsla(0, 67%, 51%, 0.521);
+
+// keycaps tomato
+$base__tomato: hsl(9, 82%, 58%);
+$base__border__tomato: hsl(7, 79%, 56%);
+$base__shadow__tomato: hsl(7, 56%, 46%);
+$reflection__tomato: hsl(9, 100%, 72%);
+$top__tomato: linear-gradient(
+	90deg,
+	hsl(9, 100%, 62%) 0%,
+	hsl(9, 91%, 68%) 60%,
+	hsl(9, 100%, 62%) 100%
+);
+$top__border__tomato: hsl(9, 94%, 69%);
+$top__shadow__tomato: hsl(9, 100%, 65%);
+
+// keycaps green
+$base__green: hsl(160, 97%, 42%);
+$base__border__green: hsl(157, 79%, 39%);
+$base__shadow__green: hsl(157, 71%, 35%);
+$reflection__green: hsl(160, 76%, 60%);
+
+$top__green: linear-gradient(
+	90deg,
+	hsl(160, 78%, 47%) 0%,
+	hsl(160, 100%, 52%) 60%,
+	hsl(160, 100%, 45%) 100%
+);
+$top__border__green: hsla(159, 92%, 62%, 0.808);
+$top__shadow__green: hsla(159, 88%, 46%, 0.986);
+
+// keycaps blue
+$base__blue: hsl(202, 77%, 51%);
+$base__border__blue: hsl(199, 79%, 39%);
+$base__shadow__blue: hsl(199, 58%, 37%);
+$reflection__blue: hsl(202, 81%, 59%);
+$top__blue: linear-gradient(
+	90deg,
+	hsl(202, 77%, 53%) 0%,
+	hsl(194, 100%, 50%) 60%,
+	hsl(202, 87%, 57%) 100%
+);
+$top__border__blue: hsl(202, 97%, 62%);
+$top__shadow__blue: hsla(202, 96%, 56%, 0.904);
+
+// keycaps violet
+$base__violet: hsl(256, 75%, 70%);
+$base__border__violet: hsl(252, 36%, 48%);
+$base__shadow__violet: hsl(252, 37%, 49%);
+$reflection__violet: hsl(256, 73%, 71%);
+$top__violet: linear-gradient(
+	90deg,
+	hsl(256, 68%, 70%) 20%,
+	hsl(257, 94%, 79%) 60%,
+	hsl(256, 95%, 75%) 100%
+);
+$top__border__violet: hsl(256, 80%, 76%);
+$top__shadow__violet: hsla(256, 69%, 69%, 0.589);
+
+// path-reflection
+@mixin reflection__right__l {
+	clip-path: polygon(45% 55%, 100% 89%, 100% 100%, 85% 100%);
+}
+@mixin reflection__left__l {
+	clip-path: polygon(0 80%, 27% 0, 12% 100%, 0% 100%);
+}
+@mixin reflection__right__m {
+	clip-path: polygon(50% 49%, 100% 84%, 100% 100%, 89% 100%);
+}
+@mixin reflection__left__m {
+	clip-path: polygon(69% 17%, 16% 100%, 0 100%, 0 91%);
+}
+@mixin reflection__right__r {
+	clip-path: polygon(85% 100%, 77% 0, 100% 97%, 100% 100%);
+}
+@mixin reflection__left__r {
+	clip-path: polygon(100% 37%, 15% 100%, 0 100%, 0 91%);
+}
+
+@mixin reflection__right($bg) {
+	width: calc(21 * var(--unit));
+	height: calc(20 * var(--unit));
+	background: $bg;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	opacity: 0.5;
+	box-shadow: inset 0 0 calc(6 * var(--unit)) calc(2.5 * var(--unit))
+		rgba(134, 134, 134, 0.37);
+}
+@mixin reflection__left($bg) {
+	width: calc(21 * var(--unit));
+	height: calc(20 * var(--unit));
+	background: $bg;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	opacity: 0.5;
+	box-shadow: inset 0 0 calc(6 * var(--unit)) calc(2.5 * var(--unit))
+		rgba(134, 134, 134, 0.37);
+}
+
+// keycaps position
+@mixin leftside {
+	top: 5%;
+	left: 2%;
+}
+
+@mixin midside {
+	top: 5%;
+	left: 14%;
+}
+
+@mixin rightside {
+	top: 5%;
+	left: 26%;
+}
+// keycaps layout
+@mixin keycaps__base__style(
+	$base__color,
+	$base__border__color,
+	$base__shadow__color
+) {
+	border-radius: 10%;
+	background: $base__color;
+	position: relative;
+	overflow: hidden;
+	border: calc(1 * var(--unit)) solid $base__border__color;
+	box-shadow: inset 0 0 calc(6 * var(--unit)) calc(2.5 * var(--unit))
+		$base__shadow__color;
+}
+
+@mixin keycaps__top__style(
+	$top__caps__bg,
+	$top__border__color,
+	$top__shadow__color
+) {
+	width: calc(32 * var(--unit));
+	height: calc(37 * var(--unit));
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: absolute;
+	background: $top__caps__bg;
+	border: calc(2 * var(--unit)) solid $top__border__color;
+	border-radius: 11.5%;
+	box-shadow: inset 0 0 calc(2 * var(--unit)) calc(1 * var(--unit))
+		$top__shadow__color;
+	span {
+		position: relative;
+		align-self: center;
+	}
+}
+
+body {
+	background-image: url("/img/concrete.png");
+	background-size: cover;
+	// min-height: 100vh;
+}
+
+img {
+	width: calc(29 * var(--unit));
+	height: calc(29 * var(--unit));
+	opacity: 0.8;
+}
+
+// resize-font zie
+.big {
+	font-size: calc(19 * var(--unit)) !important;
+}
+
+//  set keycaps top size
+.backspace {
+	width: calc(86 * var(--unit)) !important;
+	height: calc(37 * var(--unit)) !important;
+	top: 6% !important;
+	left: 11% !important;
+	border-radius: 8% !important;
+}
+
+.tab {
+	width: calc(62 * var(--unit)) !important;
+	height: calc(37 * var(--unit)) !important;
+	top: 6% !important;
+	left: 2% !important;
+}
+
+.tab_right {
+	width: calc(60 * var(--unit)) !important;
+	height: calc(38 * var(--unit)) !important;
+	top: 6% !important;
+	left: 15% !important;
+}
+
+.capslock {
+	width: calc(74 * var(--unit)) !important;
+	height: calc(37 * var(--unit)) !important;
+	top: 6% !important;
+	left: 2% !important;
+	border-radius: 8% !important;
+}
+
+.enter {
+	width: calc(100 * var(--unit)) !important;
+	height: calc(39 * var(--unit)) !important;
+	top: 5% !important;
+	left: 10% !important;
+	border-radius: 7% / 10% !important;
+}
+
+.left__shift {
+	width: calc(100 * var(--unit)) !important;
+	height: calc(37 * var(--unit)) !important;
+	top: 6% !important;
+	left: 1.3% !important;
+	border-radius: 7% !important;
+}
+
+.right__shift {
+	width: calc(72 * var(--unit)) !important;
+	height: calc(37 * var(--unit)) !important;
+	top: 6% !important;
+	left: 13% !important;
+}
+.ctrl {
+	width: calc(52 * var(--unit)) !important;
+	height: calc(37 * var(--unit)) !important;
+	top: 6% !important;
+	left: 2% !important;
+}
+
+.spacebar {
+	width: calc(305 * var(--unit)) !important;
+	height: calc(37 * var(--unit)) !important;
+	top: 7% !important;
+	left: 2% !important;
+	border-radius: 3% / 15% !important;
+}
+
+.keycaps__top::after {
+	content: "";
+	position: absolute;
+	top: -6%;
+	left: 0;
+	width: inherit;
+	height: inherit;
+	background-image: linear-gradient(
+		90deg,
+		hsla(0, 0%, 26%, 0) 0%,
+		hsla(0, 0%, 93%, 0.137) 50%,
+		hsla(0, 0%, 0%, 0) 70%
+	);
+}
+
+// border radius keycaps base
+.backspace_border {
+	border-radius: 7% / 10% !important;
+}
+.tab_border {
+	border-radius: 7% / 10% !important;
+}
+.caps_border {
+	border-radius: 7% / 10% !important;
+}
+.enter_border {
+	border-radius: 7% !important;
+}
+.shift_border {
+	border-radius: 7% !important;
+}
+.spacebar_border {
+	border-radius: 2% / 10% !important;
+}
+
+.desk__mat {
+	width: calc(1250 * var(--unit));
+	height: calc(480 * var(--unit));
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	background-image: url("/img/desk_mat.png");
+	background-size: cover;
+	filter: brightness(90%) contrast(95%) saturate(95%);
+	transform: translate(-50%, -50%);
+	border-radius: 2% / 5%;
+	border: calc(5 * var(--unit)) solid rgb(29, 29, 29);
+	box-shadow: calc(-10 * var(--unit)) calc(13 * var(--unit))
+		calc(15 * var(--unit)) calc(-5 * var(--unit)) rgb(0, 0, 0);
+}
+
+.shadow__frame,
+.frame {
+	width: calc(866 * var(--unit));
+	height: calc(330 * var(--unit));
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.shadow__frame {
+	box-shadow: calc(-34 * var(--unit)) calc(12 * var(--unit))
+		calc(24 * var(--unit)) calc(12 * var(--unit)) rgb(0, 0, 0);
+}
+
+.frame {
+	padding: calc(15 * var(--unit));
+	background-image: linear-gradient(
+		240deg,
+		hsl(0, 0%, 23%) 0%,
+		hsl(0, 0%, 17%) 70%,
+		hsl(0, 0%, 10%) 100%
+	);
+	filter: brightness(105%) contrast(95%) saturate(95%);
+
+	border-radius: 1% / 3%;
+	border-left: calc(2 * var(--unit)) solid rgb(41, 41, 41);
+	border-right: calc(1 * var(--unit)) solid rgba(73, 73, 73, 0.767);
+	border-top: calc(2 * var(--unit)) solid rgb(66, 66, 66);
+	border-bottom: calc(4 * var(--unit)) solid rgba(24, 24, 24, 0.527);
+	box-shadow: inset 0 0 calc(7 * var(--unit)) calc(3 * var(--unit))
+		rgba(19, 19, 19, 0.521);
+	.inner__frame {
+		width: calc(863 * var(--unit));
+		height: calc(329 * var(--unit));
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		background-color: rgb(25, 25, 25);
+		border: calc(1 * var(--unit)) solid rgb(0, 0, 0);
+		border-radius: 1% / 2%;
+		// layout Keyboard
+		.row__grid__1 {
+			grid-template-columns: repeat(16, 1fr);
+			grid-template-rows: 1fr;
+		}
+		.row__grid__2 {
+			grid-template-columns: repeat(13, 1fr) 2fr 1fr;
+			grid-template-rows: 1fr;
+		}
+		.row__grid__3 {
+			grid-template-columns: 1.5fr repeat(12, 1fr) 1.5fr 1fr;
+			grid-template-rows: 1fr;
+		}
+		.row__grid__4 {
+			grid-template-columns: 1.75fr repeat(11, 1fr) 2.25fr 1fr;
+			grid-template-rows: 1fr;
+		}
+		.row__grid__5 {
+			grid-template-columns: 2.25fr repeat(10, 1fr) 1.75fr 1fr 1fr;
+			grid-template-rows: 1fr;
+		}
+		.row__grid__6 {
+			grid-template-columns: repeat(3, 1.25fr) 6fr repeat(6, 1fr);
+			grid-template-rows: 1fr;
+		}
+
+		// row keycaps style
+		.row__style {
+			display: grid;
+			gap: 0.1%;
+			margin-inline: 0.2%;
+			margin-block: 0.1%;
+			position: relative;
+			width: calc(859 * var(--unit));
+			height: calc(53 * var(--unit));
+			box-shadow: calc(-9 * var(--unit)) calc(7 * var(--unit))
+				calc(8 * var(--unit)) calc(2 * var(--unit)) rgba(0, 0, 0, 0.815);
+
+			// white keycaps
+			.keycaps__l__white {
+				@include keycaps__base__style(
+					$base__white,
+					$base__border_white,
+					$base__shadow__white
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__white,
+						$top__border__white,
+						$top__shadow__white
+					);
+					@include leftside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__white);
+					@include reflection__right__l();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__white);
+					@include reflection__left__l();
+				}
+			}
+			.keycaps__m__white {
+				@include keycaps__base__style(
+					$base__white,
+					$base__border_white,
+					$base__shadow__white
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__white,
+						$top__border__white,
+						$top__shadow__white
+					);
+					@include midside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__white);
+					@include reflection__right__m();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__white);
+					@include reflection__left__m();
+				}
+			}
+			.keycaps__r__white {
+				@include keycaps__base__style(
+					$base__white,
+					$base__border_white,
+					$base__shadow__white
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__white,
+						$top__border__white,
+						$top__shadow__white
+					);
+					@include rightside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__white);
+					@include reflection__right__r();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__white);
+					@include reflection__left__r();
+				}
+			}
+
+			// yellow keycaps
+			.keycaps__l__yellow {
+				@include keycaps__base__style(
+					$base__yellow,
+					$base__border__yellow,
+					$base__shadow__yellow
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__yellow,
+						$top__border__yellow,
+						$top__shadow__yellow
+					);
+					@include leftside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__yellow);
+					@include reflection__right__l();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__yellow);
+					@include reflection__left__l();
+				}
+			}
+			.keycaps__m__yellow {
+				@include keycaps__base__style(
+					$base__yellow,
+					$base__border__yellow,
+					$base__shadow__yellow
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__yellow,
+						$top__border__yellow,
+						$top__shadow__yellow
+					);
+					@include midside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__yellow);
+					@include reflection__right__m();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__yellow);
+					@include reflection__left__m();
+				}
+			}
+			.keycaps__r__yellow {
+				@include keycaps__base__style(
+					$base__yellow,
+					$base__border__yellow,
+					$base__shadow__yellow
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__yellow,
+						$top__border__yellow,
+						$top__shadow__yellow
+					);
+					@include rightside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__yellow);
+					@include reflection__right__r();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__yellow);
+					@include reflection__left__r();
+				}
+			}
+
+			// green keycaps
+			.keycaps__l__green {
+				@include keycaps__base__style(
+					$base__green,
+					$base__border__green,
+					$base__shadow__green
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__green,
+						$top__border__green,
+						$top__shadow__green
+					);
+					@include leftside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__green);
+					@include reflection__right__l();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__green);
+					@include reflection__left__l();
+				}
+			}
+			.keycaps__m__green {
+				@include keycaps__base__style(
+					$base__green,
+					$base__border__green,
+					$base__shadow__green
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__green,
+						$top__border__green,
+						$top__shadow__green
+					);
+					@include midside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__green);
+					@include reflection__right__m();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__green);
+					@include reflection__left__m();
+				}
+			}
+			.keycaps__r__green {
+				@include keycaps__base__style(
+					$base__green,
+					$base__border__green,
+					$base__shadow__green
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__green,
+						$top__border__green,
+						$top__shadow__green
+					);
+					@include rightside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__green);
+					@include reflection__right__r();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__green);
+					@include reflection__left__r();
+				}
+			}
+			// red keycaps
+			.keycaps__l__red {
+				@include keycaps__base__style(
+					$base__red,
+					$base__border__red,
+					$base__shadow__red
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__red,
+						$top__border__red,
+						$top__shadow__red
+					);
+					@include leftside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__red);
+					@include reflection__right__l();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__red);
+					@include reflection__left__l();
+				}
+			}
+			.keycaps__m__red {
+				@include keycaps__base__style(
+					$base__red,
+					$base__border__red,
+					$base__shadow__red
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__red,
+						$top__border__red,
+						$top__shadow__red
+					);
+					@include midside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__red);
+					@include reflection__right__m();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__red);
+					@include reflection__left__m();
+				}
+			}
+			.keycaps__r__red {
+				@include keycaps__base__style(
+					$base__red,
+					$base__border__red,
+					$base__shadow__red
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__red,
+						$top__border__red,
+						$top__shadow__red
+					);
+					@include rightside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__red);
+					@include reflection__right__r();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__red);
+					@include reflection__left__r();
+				}
+			}
+
+			// tomato keycaps
+			.keycaps__l__tomato {
+				@include keycaps__base__style(
+					$base__tomato,
+					$base__border__tomato,
+					$base__shadow__tomato
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__tomato,
+						$top__border__tomato,
+						$top__shadow__tomato
+					);
+					@include leftside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__tomato);
+					@include reflection__right__l();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__tomato);
+					@include reflection__left__l();
+				}
+			}
+			.keycaps__m__tomato {
+				@include keycaps__base__style(
+					$base__tomato,
+					$base__border__tomato,
+					$base__shadow__tomato
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__tomato,
+						$top__border__tomato,
+						$top__shadow__tomato
+					);
+					@include midside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__tomato);
+					@include reflection__right__m();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__tomato);
+					@include reflection__left__m();
+				}
+			}
+			.keycaps__r__tomato {
+				@include keycaps__base__style(
+					$base__tomato,
+					$base__border__tomato,
+					$base__shadow__tomato
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__tomato,
+						$top__border__tomato,
+						$top__shadow__tomato
+					);
+					@include rightside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__tomato);
+					@include reflection__right__r();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__tomato);
+					@include reflection__left__r();
+				}
+			}
+
+			// blue keycaps
+			.keycaps__l__blue {
+				@include keycaps__base__style(
+					$base__blue,
+					$base__border__blue,
+					$base__shadow__blue
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__blue,
+						$top__border__blue,
+						$top__shadow__blue
+					);
+					@include leftside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__blue);
+					@include reflection__right__l();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__blue);
+					@include reflection__left__l();
+				}
+			}
+			.keycaps__m__blue {
+				@include keycaps__base__style(
+					$base__blue,
+					$base__border__blue,
+					$base__shadow__blue
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__blue,
+						$top__border__blue,
+						$top__shadow__blue
+					);
+					@include midside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__blue);
+					@include reflection__right__m();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__blue);
+					@include reflection__left__m();
+				}
+			}
+			.keycaps__r__blue {
+				@include keycaps__base__style(
+					$base__blue,
+					$base__border__blue,
+					$base__shadow__blue
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__blue,
+						$top__border__blue,
+						$top__shadow__blue
+					);
+					@include rightside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__blue);
+					@include reflection__right__r();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__blue);
+					@include reflection__left__r();
+				}
+			}
+
+			// violet keycaps
+			.keycaps__l__violet {
+				@include keycaps__base__style(
+					$base__violet,
+					$base__border__violet,
+					$base__shadow__violet
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__violet,
+						$top__border__violet,
+						$top__shadow__violet
+					);
+					@include leftside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__violet);
+					@include reflection__right__l();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__violet);
+					@include reflection__left__l();
+				}
+			}
+			.keycaps__m__violet {
+				@include keycaps__base__style(
+					$base__violet,
+					$base__border__violet,
+					$base__shadow__violet
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__violet,
+						$top__border__violet,
+						$top__shadow__violet
+					);
+					@include midside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__violet);
+					@include reflection__right__m();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__violet);
+					@include reflection__left__m();
+				}
+			}
+			.keycaps__r__violet {
+				@include keycaps__base__style(
+					$base__violet,
+					$base__border__violet,
+					$base__shadow__violet
+				);
+				.keycaps__top {
+					@include keycaps__top__style(
+						$top__violet,
+						$top__border__violet,
+						$top__shadow__violet
+					);
+					@include rightside();
+				}
+				.reflection__right {
+					@include reflection__right($reflection__violet);
+					@include reflection__right__r();
+				}
+				.reflection__left {
+					@include reflection__left($reflection__violet);
+					@include reflection__left__r();
+				}
+			}
+		}
+	}
+}
