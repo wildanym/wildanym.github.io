@@ -947,17 +947,17 @@ img {
 }
 
 // potrait
-// @media (max-width: 700px) {
-// 	:root {
-// 		--size: 30;
-// 	}
+@media (max-width: 700px) {
+	:root {
+		--size: 30;
+	}
 
-// 	.desk__mat {
-// 		transform: rotate(90deg);
-// 		width: calc(1250 * var(--unit));
-// 		height: calc(480 * var(--unit));
-// 		position: fixed;
-// 		top: 35%;
-// 		left: -25%;
-// 	}
-// }
+	.desk__mat {
+		transform: rotate(90deg);
+		width: calc(1250 * var(--unit));
+		height: calc(480 * var(--unit));
+		position: fixed;
+		top: 35%;
+		left: -25%;
+	}
+}
