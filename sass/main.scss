@@ -919,11 +919,11 @@ img {
 }
 
 .clicked {
-	transform: translateY(1px) scale(0.97);
+	transform: translateY(1px) scale(0.97) !important;
 }
 
 .clicked-bigbtn {
-	transform: translateY(1px) scale(0.99);
+	transform: translateY(1px) scale(0.99) !important;
 }
 
 // responsive view
