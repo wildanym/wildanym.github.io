@@ -918,6 +918,14 @@ img {
 	}
 }
 
+.clicked {
+	transform: translateY(1px) scale(0.97);
+}
+
+.clicked-bigbtn {
+	transform: translateY(1px) scale(0.99);
+}
+
 // responsive view
 
 @media (max-width: 1045px) {
