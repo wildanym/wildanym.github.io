@@ -5,7 +5,7 @@ export const STORAGE_KEYS = {
 } as const;
 
 export const SITE_CONFIG: SiteConfig = {
-  name: "",
+  name: "Wildan Yuris",
   tagline: "Frontend Developer",
   navItems: [
     { label: "Profile", to: "#profile" },

@@ -11,7 +11,7 @@ export const PROFILE = {
   name: "Wildan Yuris",
   role: "Frontend Developer",
   bio: "Frontend Developer with 4+ years of experience building scalable web applications with React, Next.js, Vue.js, and TypeScript. Focused on performance, maintainability, and creating products users love.",
-  tagline: "Breaking complex problems, not production 🤟🏼",
+  tagline: "breaking complex problems, not production",
   photoUrl: wildanPhoto,
   photoDarkUrl: wildanDarkPhoto,
   isOpenToWork: false,
@@ -23,6 +23,7 @@ export const PROFILE = {
 export const SOCIAL_LINKS: SocialLink[] = [
   { label: "GitHub", href: "https://github.com/wildanym" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/wildanyuris/" },
+  { label: "Instagram", href: "https://www.instagram.com/wildanyuris/" },
   { label: "Email", href: "mailto:wildanym@gmail.com" },
 ];
 

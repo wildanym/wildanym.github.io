@@ -76,7 +76,7 @@ export function MobileNav() {
           <li key={item.to} className='flex-1'>
             <a
               href={item.to}
-              className='flex min-h-14 flex-col items-center justify-center gap-1 rounded-lg text-[10px] font-medium text-ink-soft transition-colors hover:text-heading dark:text-ink-dark-soft dark:hover:text-heading'
+              className='flex min-h-14 flex-col items-center justify-center gap-1 rounded-lg text-xs font-medium text-ink-soft transition-colors hover:text-heading dark:text-ink-dark-soft dark:hover:text-heading'
             >
               {NAV_ICONS[item.to]}
               {item.label}

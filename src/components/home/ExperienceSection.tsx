@@ -56,12 +56,12 @@ export function ExperienceSection() {
                     typeof achievement === "object" ? (
                       <li
                         key={achievement.subtitle}
-                        className='pt-1 sm:text-sm text-xs font-semibold text-ink dark:text-ink-dark'
+                        className='pt-1 text-sm font-semibold text-ink dark:text-ink-dark'
                       >
                         {achievement.subtitle}
                       </li>
                     ) : (
-                      <li key={achievement} className='flex gap-2 sm:text-sm text-xs text-ink dark:text-ink-dark-soft'>
+                      <li key={achievement} className='flex gap-2 text-sm text-ink dark:text-ink-dark-soft'>
                         <span className='mt-2 size-1.5 shrink-0 rounded-full bg-green-500' aria-hidden='true' />
                         {achievement}
                       </li>
@@ -69,7 +69,7 @@ export function ExperienceSection() {
                   )}
                 </ul>
                 {experience.projects?.length ? (
-                  <div className='mt-4 grid grid-cols-3 gap-3'>
+                  <div className='mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3'>
                     {experience.projects.map((project) => (
                       <button
                         key={project.title}
@@ -82,9 +82,9 @@ export function ExperienceSection() {
                           alt={project.title}
                           loading='lazy'
                           decoding='async'
-                          className='aspect-video w-full rounded-lg border border-line object-cover transition-transform duration-200 group-hover:scale-[1.02] group-hover:border-brand-300 dark:border-line-dark dark:group-hover:border-brand-700'
+                          className='aspect-video w-full rounded-lg border border-line object-cover transition-transform duration-200 group-hover:scale-[1.02] group-hover:border-brand-300 dark:border-line-dark dark:group-hover:border-brand-400'
                         />
-                        <span className='mt-1.5 line-clamp-1 block sm:text-sm text-[10px] font-medium text-ink-soft group-hover:text-heading dark:text-ink-dark-soft dark:group-hover:text-heading'>
+                        <span className='mt-1.5 line-clamp-1 block text-xs font-medium text-ink-soft group-hover:text-heading dark:text-ink-dark-soft dark:group-hover:text-heading'>
                           {project.title}
                         </span>
                       </button>

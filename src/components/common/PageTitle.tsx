@@ -9,7 +9,7 @@ interface PageTitleProps {
 export function PageTitle({ title, subtitle, className }: PageTitleProps) {
   return (
     <header className={cn('mb-8 sm:mb-12', className)}>
-      <h1 className="text-3xl font-bold tracking-tight text-heading sm:text-4xl">
+      <h1 className="text-balance text-3xl font-bold tracking-tight text-heading sm:text-4xl">
         {title}
       </h1>
       {subtitle ? (

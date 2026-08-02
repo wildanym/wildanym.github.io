@@ -29,7 +29,7 @@ export function SectionHeading({ id, title, subtitle, icon, accent = "blue", cla
             {icon}
           </span>
         ) : null}
-        <h2 className='text-xl font-bold tracking-tight text-heading sm:text-3xl'>{title}</h2>
+        <h2 className='text-balance text-xl font-bold tracking-tight text-heading sm:text-3xl'>{title}</h2>
       </div>
       {subtitle ? <p className='mt-3 max-w-2xl text-base text-ink dark:text-ink-dark-soft'>{subtitle}</p> : null}
     </header>

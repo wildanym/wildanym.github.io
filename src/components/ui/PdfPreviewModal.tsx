@@ -9,17 +9,46 @@ interface PdfPreviewModalProps {
 
 export function PdfPreviewModal({ url, title, onClose, download }: PdfPreviewModalProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (!url) return;
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    previousFocusRef.current = document.activeElement as HTMLElement | null;
     closeButtonRef.current?.focus();
+
+    const FOCUSABLE =
+      'a[href], button:not([disabled]), textarea, input, select, iframe, [tabindex]:not([tabindex="-1"])';
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         onClose();
+        return;
+      }
+      if (event.key !== "Tab") return;
+
+      const dialog = dialogRef.current;
+      if (!dialog) return;
+      const focusables = Array.from(dialog.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
+        (element) => element.offsetParent !== null,
+      );
+      if (focusables.length === 0) return;
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement;
+
+      if (event.shiftKey) {
+        if (active === first || !dialog.contains(active)) {
+          event.preventDefault();
+          last.focus();
+        }
+      } else if (active === last || !dialog.contains(active)) {
+        event.preventDefault();
+        first.focus();
       }
     };
 
@@ -27,6 +56,7 @@ export function PdfPreviewModal({ url, title, onClose, download }: PdfPreviewMod
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
+      previousFocusRef.current?.focus();
     };
   }, [url, onClose]);
 
@@ -41,7 +71,8 @@ export function PdfPreviewModal({ url, title, onClose, download }: PdfPreviewMod
       aria-label={title ?? "Preview PDF"}
     >
       <div
-        className='flex max-h-[85vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl border border-line bg-card shadow-xl dark:border-line-dark dark:bg-card-dark'
+        ref={dialogRef}
+        className='flex max-h-[85vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl border border-line bg-card shadow-xl overscroll-contain dark:border-line-dark dark:bg-card-dark'
         onClick={(event) => event.stopPropagation()}
       >
         <div className='flex items-center justify-between gap-4 border-b border-line px-4 py-3 dark:border-line-dark'>

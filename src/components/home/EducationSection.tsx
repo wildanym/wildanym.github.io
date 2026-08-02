@@ -42,7 +42,7 @@ export function EducationSection() {
                 <span className='text-sm font-medium text-green-700 dark:text-green-500'>{education.period}</span>
               ) : null}
               <h3 className='mt-1 sm:text-lg text-base font-semibold text-heading'>{education.institution}</h3>
-              <p className='mt-1 sm:text-sm text-xs font-medium text-ink dark:text-ink-dark'>{education.degree}</p>
+              <p className='mt-1 text-sm font-medium text-ink dark:text-ink-dark'>{education.degree}</p>
               {education.description ? (
                 <p className='mt-3 text-sm leading-relaxed text-ink dark:text-ink-dark-soft'>{education.description}</p>
               ) : null}
