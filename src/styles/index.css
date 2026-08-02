@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, Consolas, "Courier New", monospace;
+
+  --color-brand-50: #eaf1fb;
+  --color-brand-100: #d4e2f7;
+  --color-brand-200: #a9c5ef;
+  --color-brand-300: #7ea8e7;
+  --color-brand-400: #528bde;
+  --color-brand-500: #2d6cc9;
+  --color-brand-600: #0e49b5;
+  --color-brand-700: #0c3d97;
+  --color-brand-800: #0a317a;
+  --color-brand-900: #08265e;
+  --color-brand-950: #061a41;
+
+  --color-green-50: #ecfce9;
+  --color-green-100: #d8f8d3;
+  --color-green-200: #b4f0a9;
+  --color-green-300: #8fe880;
+  --color-green-400: #6bde58;
+  --color-green-500: #54e346;
+  --color-green-600: #2fb522;
+  --color-green-700: #17850e;
+  --color-green-800: #14720d;
+  --color-green-900: #0f5a0a;
+  --color-green-950: #083d06;
+
+  --color-heading: #0e49b5;
+  --color-ink: #1e293b;
+  --color-ink-soft: #475569;
+  --color-canvas: #f5f7fa;
+  --color-canvas-hover: #eef1f5;
+  --color-card: #ffffff;
+  --color-line: #e3e8ef;
+  --color-ink-dark: #f1f5f9;
+  --color-ink-dark-soft: #94a3b8;
+  --color-canvas-dark: #1b1f26;
+  --color-card-dark: #242832;
+  --color-line-dark: #2f3642;
+
+  --color-surface: #f5f7fa;
+  --color-surface-dark: #1b1f26;
+
+  --shadow-card: 0 1px 3px rgb(0 0 0 / 0.08), 0 1px 2px rgb(0 0 0 / 0.04);
+}
+
+.dark {
+  --color-heading: #66a0f2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  clip-path: circle(0 at var(--theme-origin-x, 50%) var(--theme-origin-y, 50%));
+  animation: theme-reveal 1.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes theme-reveal {
+  to {
+    clip-path: circle(var(--theme-origin-r, 150%) at var(--theme-origin-x, 50%) var(--theme-origin-y, 50%));
+  }
+}
+
+@layer components {
+  .glass {
+    background-color: rgb(245 247 250 / 0.6);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+  }
+
+  .dark .glass {
+    background-color: rgb(27 31 38 / 0.6);
+  }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background-color: rgb(245 247 250 / 0.6);
+  }
+
+  .dark .glass {
+    background-color: rgb(27 31 38 / 0.75);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .dark body {
+    background-color: var(--color-canvas-dark);
+    color: var(--color-ink-dark);
+  }
+}
