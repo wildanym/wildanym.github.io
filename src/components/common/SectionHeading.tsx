@@ -25,9 +25,12 @@ export function SectionHeading({ id, title, subtitle, icon, accent = "blue", cla
       id={id}
       className={cn(
         "mb-8 transition-[opacity,transform] duration-700 ease-out motion-reduce:transition-none sm:mb-12",
-        inView ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0",
         className,
       )}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translateY(0)" : "translateY(20px)",
+      }}
     >
       <div className='flex items-center gap-3'>
         {icon ? (

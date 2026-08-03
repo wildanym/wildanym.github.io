@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 const LAYERS = [
   { speed: 0.04, className: "top-[-2.5rem] right-[-3rem] sm:top-[-3rem]" },
   { speed: 0.07, className: "top-[16rem] left-[-7rem]" },
-  { speed: -0.04, className: "bottom-[-3rem] left-[-2rem] sm:left-[4rem]" },
+  { speed: -0.04, className: "bottom-[-3rem] left-[-1rem] sm:left-[4rem]" },
   { speed: 0.12, className: "top-[42%] right-[8%]" },
 ];
 
@@ -53,7 +53,7 @@ export function BackgroundMotif() {
         }}
         className={`absolute will-change-transform ${LAYERS[1].className}`}
       >
-        <span className='block size-[clamp(14rem,30vw,26rem)] rounded-full border-[3px] border-brand-300/10 dark:border-brand-400/10' />
+        <span className='block size-[clamp(12rem,20vw,21rem)] rounded-full border-[3px] border-brand-300/10 dark:border-brand-400/10' />
       </div>
       <div
         ref={(el) => {

@@ -11,14 +11,17 @@ interface RevealProps {
 export function Reveal({ children, className, delay = 0 }: RevealProps) {
   const { ref, inView } = useInView<HTMLDivElement>();
 
-  const style: CSSProperties | undefined = delay ? { transitionDelay: `${delay}ms` } : undefined;
+  const style: CSSProperties = {
+    opacity: inView ? 1 : 0,
+    transform: inView ? "translateY(0)" : "translateY(20px)",
+    ...(delay ? { transitionDelay: `${delay}ms` } : {}),
+  };
 
   return (
     <div
       ref={ref}
       className={cn(
         "transition-[opacity,transform] duration-700 ease-out motion-reduce:transition-none",
-        inView ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0",
         className,
       )}
       style={style}
