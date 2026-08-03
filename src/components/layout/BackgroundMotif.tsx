@@ -3,8 +3,8 @@ import { useEffect, useRef } from "react";
 const LAYERS = [
   { speed: 0.04, className: "top-[-2.5rem] right-[-3rem] sm:top-[-3rem]" },
   { speed: 0.07, className: "top-[16rem] left-[-7rem]" },
-  { speed: -0.04, className: "bottom-[-3rem] left-[-1rem] sm:left-[4rem]" },
-  { speed: 0.12, className: "top-[42%] right-[8%]" },
+  { speed: -0.04, className: "bottom-[-3rem] right-[-1rem] sm:right-[4rem]" },
+  { speed: 0.12, className: "top-[52%] right-[8%]" },
 ];
 
 export function BackgroundMotif() {

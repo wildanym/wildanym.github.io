@@ -3,7 +3,6 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { FloatingThemeToggle } from "@/components/layout/FloatingThemeToggle";
-import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { BackgroundMotif } from "@/components/layout/BackgroundMotif";
 
 export function MainLayout() {
@@ -16,7 +15,6 @@ export function MainLayout() {
         Lompat ke konten utama
       </a>
       <BackgroundMotif />
-      <ScrollProgress />
       <Header />
       <main id='main' className='flex-1'>
         <Outlet />
