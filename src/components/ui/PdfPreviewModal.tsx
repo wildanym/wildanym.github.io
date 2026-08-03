@@ -1,3 +1,4 @@
+import { Download, X } from "lucide-react";
 import { useEffect, useRef } from "react";
 
 interface PdfPreviewModalProps {
@@ -86,20 +87,7 @@ export function PdfPreviewModal({ url, title, onClose, download }: PdfPreviewMod
                 download={download.fileName}
                 className='inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-brand-700'
               >
-                <svg
-                  className='size-4'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  strokeWidth={1.8}
-                  stroke='currentColor'
-                  aria-hidden='true'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    d='M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3'
-                  />
-                </svg>
+                <Download className='size-4' aria-hidden='true' />
                 Download
               </a>
             ) : null}
@@ -110,20 +98,7 @@ export function PdfPreviewModal({ url, title, onClose, download }: PdfPreviewMod
               aria-label='Tutup preview'
               className='inline-flex size-8 shrink-0 items-center justify-center rounded-lg text-ink-soft transition-colors hover:bg-canvas-hover hover:text-heading dark:text-ink-dark-soft dark:hover:bg-card-dark dark:hover:text-heading'
             >
-              <svg
-                className='size-5'
-                fill='none'
-                viewBox='0 0 24 24'
-                strokeWidth={1.8}
-                stroke='currentColor'
-                aria-hidden='true'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='M6 18 18 6M6 6l12 12'
-                />
-              </svg>
+              <X className='size-5' aria-hidden='true' />
             </button>
           </div>
         </div>

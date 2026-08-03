@@ -1,3 +1,4 @@
+import { ExternalLink, X } from "lucide-react";
 import { useEffect, useRef } from "react";
 import type { ProjectShowcase } from "@/types";
 
@@ -85,20 +86,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             aria-label='Tutup preview'
             className='inline-flex size-8 shrink-0 items-center justify-center rounded-lg text-ink-soft transition-colors hover:bg-canvas-hover hover:text-heading dark:text-ink-dark-soft dark:hover:bg-card-dark dark:hover:text-heading'
           >
-            <svg
-              className='size-5'
-              fill='none'
-              viewBox='0 0 24 24'
-              strokeWidth={1.8}
-              stroke='currentColor'
-              aria-hidden='true'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                d='M6 18 18 6M6 6l12 12'
-              />
-            </svg>
+            <X className='size-5' aria-hidden='true' />
           </button>
         </div>
         <div className='overflow-y-auto p-4 sm:p-6'>
@@ -120,20 +108,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               rel='noopener noreferrer'
               className='mt-4 inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-brand-700'
             >
-              <svg
-                className='size-4'
-                fill='none'
-                viewBox='0 0 24 24'
-                strokeWidth={1.8}
-                stroke='currentColor'
-                aria-hidden='true'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25'
-                />
-              </svg>
+              <ExternalLink className='size-4' aria-hidden='true' />
               Visit Website
             </a>
           ) : null}
