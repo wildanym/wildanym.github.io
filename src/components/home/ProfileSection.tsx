@@ -49,7 +49,9 @@ export function ProfileSection() {
         </div>
         <div>
           <div className='flex items-center gap-4'>
-            <Photo src={photoSrc} className='size-20 shrink-0 rounded-[1.2rem] object-cover md:hidden' />
+            <div className='relative shrink-0 md:hidden'>
+              <Photo src={photoSrc} className='relative size-20 rounded-[1.2rem] object-cover' />
+            </div>
             <div className='min-w-0'>
               {PROFILE.isOpenToWork ? (
                 <span className='hidden md:inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-3 py-1 text-sm font-medium text-green-700 dark:border-green-800 dark:bg-green-950/50 dark:text-green-500'>
@@ -92,7 +94,13 @@ export function ProfileSection() {
         </div>
 
         <div className='hidden justify-end md:flex'>
-          <Photo src={photoSrc} className='size-48 rounded-[1.4rem] object-cover sm:size-56' />
+          <div className='relative'>
+            <span
+              aria-hidden='true'
+              className='absolute inset-0 translate-x-3 translate-y-3 rounded-[1.4rem] border-2 border-brand-300/40 dark:border-brand-400/20'
+            />
+            <Photo src={photoSrc} className='relative size-48 rounded-[1.4rem] object-cover sm:size-56' />
+          </div>
         </div>
       </Container>
     </Section>

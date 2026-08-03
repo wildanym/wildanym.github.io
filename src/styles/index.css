@@ -378,4 +378,14 @@
     background-color: var(--color-canvas-dark);
     color: var(--color-ink-dark);
   }
+
+  ::selection {
+    background-color: var(--color-brand-600);
+    color: #ffffff;
+  }
+
+  .dark ::selection {
+    background-color: var(--color-brand-400);
+    color: var(--color-brand-900);
+  }
 }

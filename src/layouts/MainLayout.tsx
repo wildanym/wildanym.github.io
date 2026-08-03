@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { FloatingThemeToggle } from "@/components/layout/FloatingThemeToggle";
 import { BackgroundMotif } from "@/components/layout/BackgroundMotif";
+import { BackToTop } from "@/components/layout/BackToTop";
 
 export function MainLayout() {
   return (
@@ -21,6 +22,7 @@ export function MainLayout() {
       </main>
       <Footer />
       <MobileNav />
+      <BackToTop />
       <FloatingThemeToggle />
     </div>
   );

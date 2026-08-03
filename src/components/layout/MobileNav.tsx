@@ -1,7 +1,8 @@
-import { useEffect, useState, type ComponentType } from "react";
+import { useEffect, useMemo, useState, type ComponentType } from "react";
 import { BriefcaseBusiness, GraduationCap, Star, User } from "lucide-react";
 import { SITE_CONFIG } from "@/constants";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
+import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { cn } from "@/utils/cn";
 
 const NAV_ICONS: Record<string, ComponentType<{ className?: string }>> = {
@@ -15,6 +16,8 @@ export function MobileNav() {
   const direction = useScrollDirection();
   const [isAtBottom, setIsAtBottom] = useState(false);
   const [isAtTop, setIsAtTop] = useState(false);
+  const sectionIds = useMemo(() => SITE_CONFIG.navItems.map((item) => item.to.slice(1)), []);
+  const activeId = useScrollSpy(sectionIds);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,20 +44,29 @@ export function MobileNav() {
       )}
     >
       <ul className='relative flex items-stretch'>
-        {SITE_CONFIG.navItems.map((item) => (
-          <li key={item.to} className='flex-1'>
-            <a
-              href={item.to}
-              className='flex min-h-14 flex-col items-center justify-center gap-1 rounded-lg text-xs font-medium text-ink-soft transition-colors hover:text-heading dark:text-ink-dark-soft dark:hover:text-heading'
-            >
-              {(() => {
-                const NavIcon = NAV_ICONS[item.to];
-                return NavIcon ? <NavIcon className='size-5' aria-hidden='true' /> : null;
-              })()}
-              {item.label}
-            </a>
-          </li>
-        ))}
+        {SITE_CONFIG.navItems.map((item) => {
+          const isActive = activeId === item.to.slice(1);
+          return (
+            <li key={item.to} className='flex-1'>
+              <a
+                href={item.to}
+                aria-current={isActive ? "location" : undefined}
+                className={cn(
+                  "flex min-h-14 flex-col items-center justify-center gap-1 rounded-lg text-xs font-medium transition-colors",
+                  isActive
+                    ? "text-heading"
+                    : "text-ink-soft hover:text-heading dark:text-ink-dark-soft dark:hover:text-heading",
+                )}
+              >
+                {(() => {
+                  const NavIcon = NAV_ICONS[item.to];
+                  return NavIcon ? <NavIcon className='size-5' aria-hidden='true' /> : null;
+                })()}
+                {item.label}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

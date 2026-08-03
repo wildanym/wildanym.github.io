@@ -26,7 +26,7 @@ export function SkillsSection() {
                 {category.skills.map((skill) => (
                   <li
                     key={skill.name}
-                    className='rounded-full border border-line bg-canvas px-3 py-1.5 sm:text-sm text-xs font-medium text-ink dark:border-line-dark dark:bg-canvas-dark dark:text-ink-dark'
+                    className='rounded-full border border-line bg-canvas px-3 py-1.5 text-xs font-medium text-ink transition-transform duration-200 hover:-translate-y-0.5 hover:border-green-500/60 hover:text-heading sm:text-sm dark:border-line-dark dark:bg-canvas-dark dark:text-ink-dark dark:hover:border-green-500/60 dark:hover:text-heading'
                   >
                     {skill.name}
                   </li>
