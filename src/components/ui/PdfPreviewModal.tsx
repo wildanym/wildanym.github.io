@@ -65,7 +65,7 @@ export function PdfPreviewModal({ url, title, onClose, download }: PdfPreviewMod
 
   return (
     <div
-      className='fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm'
+      className='animate-modal-backdrop fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm'
       onClick={onClose}
       role='dialog'
       aria-modal='true'
@@ -73,7 +73,7 @@ export function PdfPreviewModal({ url, title, onClose, download }: PdfPreviewMod
     >
       <div
         ref={dialogRef}
-        className='flex max-h-[85vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl border border-line bg-card shadow-xl overscroll-contain dark:border-line-dark dark:bg-card-dark'
+        className='animate-modal-panel flex max-h-[85vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl border border-line bg-card shadow-xl overscroll-contain dark:border-line-dark dark:bg-card-dark'
         onClick={(event) => event.stopPropagation()}
       >
         <div className='flex items-center justify-between gap-4 border-b border-line px-4 py-3 dark:border-line-dark'>

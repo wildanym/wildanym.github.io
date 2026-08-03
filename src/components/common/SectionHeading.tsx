@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useInView } from "@/hooks/useInView";
 import { cn } from "@/utils/cn";
 
 interface SectionHeadingProps {
@@ -16,8 +17,18 @@ const accentClasses: Record<NonNullable<SectionHeadingProps["accent"]>, string> 
 };
 
 export function SectionHeading({ id, title, subtitle, icon, accent = "blue", className }: SectionHeadingProps) {
+  const { ref, inView } = useInView<HTMLElement>();
+
   return (
-    <header id={id} className={cn("mb-8 sm:mb-12", className)}>
+    <header
+      ref={ref}
+      id={id}
+      className={cn(
+        "mb-8 transition-[opacity,transform] duration-700 ease-out motion-reduce:transition-none sm:mb-12",
+        inView ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0",
+        className,
+      )}
+    >
       <div className='flex items-center gap-3'>
         {icon ? (
           <span

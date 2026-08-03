@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import { Reveal } from "@/components/common/Reveal";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { Container } from "@/components/common/Container";
 import { Section } from "@/components/common/Section";
@@ -16,11 +17,9 @@ export function SkillsSection() {
         />
 
         <div className='grid gap-6'>
-          {SKILL_CATEGORIES.map((category) => (
-            <article
-              key={category.title}
-              className='rounded-2xl border border-line bg-card p-6 shadow-card transition-shadow hover:shadow-md dark:border-line-dark dark:bg-card-dark'
-            >
+          {SKILL_CATEGORIES.map((category, index) => (
+            <Reveal key={category.title} delay={index * 80}>
+              <article className='rounded-2xl border border-line bg-card p-6 shadow-card transition-shadow hover:shadow-md dark:border-line-dark dark:bg-card-dark'>
               <h3 className='text-lg font-semibold text-heading'>{category.title}</h3>
               <p className='mt-1 text-sm text-ink-soft dark:text-ink-dark-soft'>{category.description}</p>
               <ul className='mt-4 flex flex-wrap gap-2'>
@@ -33,7 +32,8 @@ export function SkillsSection() {
                   </li>
                 ))}
               </ul>
-            </article>
+              </article>
+            </Reveal>
           ))}
         </div>
       </Container>

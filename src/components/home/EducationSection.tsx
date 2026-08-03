@@ -1,5 +1,6 @@
 import { Eye, GraduationCap } from "lucide-react";
 import { useState } from "react";
+import { Reveal } from "@/components/common/Reveal";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { Container } from "@/components/common/Container";
 import { Section } from "@/components/common/Section";
@@ -19,11 +20,9 @@ export function EducationSection() {
         />
 
         <div className='grid gap-6'>
-          {EDUCATIONS.map((education) => (
-            <article
-              key={`${education.institution}-${education.degree}`}
-              className='rounded-2xl border border-line bg-card p-6 shadow-card transition-shadow hover:shadow-md dark:border-line-dark dark:bg-card-dark'
-            >
+          {EDUCATIONS.map((education, index) => (
+            <Reveal key={`${education.institution}-${education.degree}`} delay={index * 80}>
+              <article className='rounded-2xl border border-line bg-card p-6 shadow-card transition-shadow hover:shadow-md dark:border-line-dark dark:bg-card-dark'>
               {education.period ? (
                 <span className='text-sm font-medium text-green-700 dark:text-green-500'>{education.period}</span>
               ) : null}
@@ -45,7 +44,8 @@ export function EducationSection() {
                   Certificate
                 </a>
               ) : null}
-            </article>
+              </article>
+            </Reveal>
           ))}
         </div>
       </Container>
