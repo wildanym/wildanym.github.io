@@ -267,6 +267,75 @@
       animation: none;
     }
   }
+
+  .icon-glow {
+    animation: icon-glow 2.4s ease-out both;
+  }
+
+  @keyframes icon-glow {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+
+    25% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(1.7);
+    }
+  }
+
+  .moon-glow {
+    background: radial-gradient(
+      circle,
+      rgb(224 242 254 / 0.95) 0%,
+      rgb(125 211 252 / 0.5) 35%,
+      rgb(147 197 253 / 0.25) 60%,
+      transparent 75%
+    );
+    filter: blur(4px);
+  }
+
+  .sun-glow {
+    background: radial-gradient(
+      circle,
+      rgb(254 243 199 / 0.95) 0%,
+      rgb(251 191 36 / 0.55) 35%,
+      rgb(251 146 60 / 0.25) 60%,
+      transparent 75%
+    );
+    filter: blur(4px);
+  }
+
+  .sun-icon-burst {
+    animation: sun-icon-burst 2.4s ease-out both;
+  }
+
+  @keyframes sun-icon-burst {
+    0%,
+    30% {
+      color: rgb(249 115 22);
+    }
+
+    100% {
+      color: var(--color-ink);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .icon-glow {
+      animation: none;
+      opacity: 0;
+    }
+
+    .sun-icon-burst {
+      animation: none;
+    }
+  }
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
