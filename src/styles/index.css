@@ -163,6 +163,110 @@
       animation: none;
     }
   }
+
+  .motif-reveal-top {
+    clip-path: inset(0 0 100% 0);
+    animation: motif-reveal-top 1.3s steps(30, end) both;
+  }
+
+  @keyframes motif-reveal-top {
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  .motif-reveal-bottom {
+    clip-path: inset(100% 0 0 0);
+    animation: motif-reveal-bottom 1.3s steps(30, end) both;
+  }
+
+  @keyframes motif-reveal-bottom {
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  .motif-reveal-left {
+    clip-path: inset(0 100% 0 0);
+    animation: motif-reveal-left 1.3s steps(30, end) both;
+  }
+
+  @keyframes motif-reveal-left {
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  .motif-dot-drop {
+    opacity: 0;
+    animation: motif-dot-drop 1.7s both;
+  }
+
+  @keyframes motif-dot-drop {
+    0% {
+      transform: translateY(-180px) scale(1, 1);
+      opacity: 0;
+      animation-timing-function: ease-in;
+    }
+
+    15% {
+      opacity: 1;
+    }
+
+    30% {
+      transform: translateY(0) scale(1.2, 0.8);
+      animation-timing-function: ease-out;
+    }
+
+    45% {
+      transform: translateY(-80px) scale(0.92, 1.08);
+      animation-timing-function: ease-in;
+    }
+
+    58% {
+      transform: translateY(0) scale(1.12, 0.88);
+      animation-timing-function: ease-out;
+    }
+
+    70% {
+      transform: translateY(-36px) scale(0.96, 1.04);
+      animation-timing-function: ease-in;
+    }
+
+    80% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+    }
+
+    88% {
+      transform: translateY(-14px);
+      animation-timing-function: ease-in;
+    }
+
+    94% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .motif-reveal-top,
+    .motif-reveal-bottom,
+    .motif-reveal-left {
+      clip-path: none;
+      animation: none;
+    }
+
+    .motif-dot-drop {
+      opacity: 1;
+      animation: none;
+    }
+  }
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {

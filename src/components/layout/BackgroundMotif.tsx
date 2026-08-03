@@ -1,10 +1,30 @@
 import { useEffect, useRef } from "react";
 
 const LAYERS = [
-  { speed: 0.04, className: "top-[-2.5rem] right-[-3rem] sm:top-[-3rem]" },
-  { speed: 0.07, className: "top-[16rem] left-[-7rem]" },
-  { speed: -0.04, className: "bottom-[-3rem] right-[-1rem] sm:right-[4rem]" },
-  { speed: 0.12, className: "top-[52%] right-[8%]" },
+  {
+    speed: 0.04,
+    className: "top-[-2.5rem] right-[-3rem] sm:top-[-3rem]",
+    revealClass: "motif-reveal-top",
+    revealDelay: "0.4s",
+  },
+  {
+    speed: 0.07,
+    className: "top-[16rem] left-[-7rem]",
+    revealClass: "motif-reveal-bottom",
+    revealDelay: "0.7s",
+  },
+  {
+    speed: -0.04,
+    className: "bottom-[-3rem] right-[-1rem] sm:right-[4rem]",
+    revealClass: "motif-reveal-left",
+    revealDelay: "0.9s",
+  },
+  {
+    speed: 0,
+    className: "top-[52%] right-[8%]",
+    revealClass: "motif-dot-drop",
+    revealDelay: "1.1s",
+  },
 ];
 
 export function BackgroundMotif() {
@@ -43,7 +63,10 @@ export function BackgroundMotif() {
         }}
         className={`absolute will-change-transform ${LAYERS[0].className}`}
       >
-        <span className='block font-mono text-[clamp(10rem,22vw,18rem)] font-semibold leading-none tracking-tighter text-brand-500/5 dark:text-brand-400/5'>
+        <span
+          className={`block font-mono text-[clamp(10rem,22vw,18rem)] font-semibold leading-none tracking-tighter text-brand-500/5 dark:text-brand-400/5 ${LAYERS[0].revealClass}`}
+          style={{ animationDelay: LAYERS[0].revealDelay }}
+        >
           {"{ }"}
         </span>
       </div>
@@ -53,7 +76,10 @@ export function BackgroundMotif() {
         }}
         className={`absolute will-change-transform ${LAYERS[1].className}`}
       >
-        <span className='block size-[clamp(12rem,20vw,21rem)] rounded-full border-[3px] border-brand-300/10 dark:border-brand-400/10' />
+        <span
+          className={`block size-[clamp(12rem,20vw,21rem)] rounded-full border-[3px] border-brand-300/10 dark:border-brand-400/10 ${LAYERS[1].revealClass}`}
+          style={{ animationDelay: LAYERS[1].revealDelay }}
+        />
       </div>
       <div
         ref={(el) => {
@@ -61,7 +87,10 @@ export function BackgroundMotif() {
         }}
         className={`absolute will-change-transform ${LAYERS[2].className}`}
       >
-        <span className='block font-mono text-[clamp(6rem,14vw,11rem)] font-semibold leading-none tracking-tighter text-green-600/5 dark:text-green-500/5'>
+        <span
+          className={`block font-mono text-[clamp(6rem,14vw,11rem)] font-semibold leading-none tracking-tighter text-green-600/5 dark:text-green-500/5 ${LAYERS[2].revealClass}`}
+          style={{ animationDelay: LAYERS[2].revealDelay }}
+        >
           {"</>"}
         </span>
       </div>
@@ -71,7 +100,10 @@ export function BackgroundMotif() {
         }}
         className={`absolute will-change-transform ${LAYERS[3].className}`}
       >
-        <span className='block size-7 rounded-full bg-green-500/15 dark:bg-green-500/20' />
+        <span
+          className={`block size-7 rounded-full bg-green-500/15 dark:bg-green-500/20 ${LAYERS[3].revealClass}`}
+          style={{ animationDelay: LAYERS[3].revealDelay }}
+        />
       </div>
     </div>
   );
