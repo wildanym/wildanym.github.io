@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Outlet } from "react-router";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -18,7 +19,15 @@ export function MainLayout() {
       <BackgroundMotif />
       <Header />
       <main id='main' className='flex-1'>
-        <Outlet />
+        <Suspense
+          fallback={
+            <div className='flex min-h-40 items-center justify-center text-sm text-ink-soft dark:text-ink-dark-soft'>
+              Memuat…
+            </div>
+          }
+        >
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
       <MobileNav />

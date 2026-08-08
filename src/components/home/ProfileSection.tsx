@@ -26,13 +26,24 @@ const SOCIAL_ICONS: Record<string, ReactNode> = {
   Email: <Mail className='size-5' aria-hidden='true' />,
 };
 
-function Photo({ src, className }: { src: string; className: string }) {
+function Photo({
+  src,
+  className,
+  priority = false,
+}: {
+  src: string;
+  className: string;
+  priority?: boolean;
+}) {
   return (
     <img
       src={src}
       alt={`Foto profil ${PROFILE.name}`}
       width={200}
       height={200}
+      loading={priority ? "eager" : "lazy"}
+      fetchPriority={priority ? "high" : "low"}
+      decoding='async'
       className={`${className} shadow-card`}
     />
   );
@@ -50,7 +61,7 @@ export function ProfileSection() {
         <div>
           <div className='flex items-center gap-4'>
             <div className='relative shrink-0 md:hidden'>
-              <Photo src={photoSrc} className='relative size-20 rounded-[1.2rem] object-cover' />
+              <Photo src={photoSrc} priority className='relative size-20 rounded-[1.2rem] object-cover' />
             </div>
             <div className='min-w-0'>
               {PROFILE.isOpenToWork ? (

@@ -1,10 +1,10 @@
 import type { Education, Experience, SkillCategory, SocialLink } from "@/types";
-import wildanPhoto from "@/assets/images/wildan.jpeg";
-import wildanDarkPhoto from "@/assets/images/wildan-dark.jpg";
-import melangkahImg from "@/assets/images/melangkah.jpg";
-import pakmoImg from "@/assets/images/pakmo.jpg";
-import cloamiImg from "@/assets/images/cloami.jpg";
-import mydigilearnImg from "@/assets/images/mydigilearn.jpg";
+import wildanPhoto from "@/assets/images/wildan.webp";
+import wildanDarkPhoto from "@/assets/images/wildan-dark.webp";
+import melangkahImg from "@/assets/images/melangkah.webp";
+import pakmoImg from "@/assets/images/pakmo.webp";
+import cloamiImg from "@/assets/images/cloami.webp";
+import mydigilearnImg from "@/assets/images/mydigilearn.webp";
 import jccPdf from "@/assets/doc/jcc.pdf";
 
 export const PROFILE = {

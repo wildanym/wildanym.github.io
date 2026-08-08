@@ -379,6 +379,13 @@
     color: var(--color-ink-dark);
   }
 
+  #experience,
+  #skills,
+  #education {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
+  }
+
   ::selection {
     background-color: var(--color-brand-600);
     color: #ffffff;
