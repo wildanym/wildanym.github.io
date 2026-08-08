@@ -1,5 +1,5 @@
 import { cn } from "@/utils/cn";
-import logoSrc from "@/assets/images/logo.webp";
+import logoSrc from "@/assets/images/logo.png";
 
 interface LogoWebProps {
   className?: string;
