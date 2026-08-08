@@ -1,5 +1,6 @@
 import { ExternalLink, X } from "lucide-react";
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import type { ProjectShowcase } from "@/types";
 
 interface ProjectModalProps {
@@ -62,7 +63,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   if (!project) return null;
 
-  return (
+  return createPortal(
     <div
       className='animate-modal-backdrop fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm'
       onClick={onClose}
@@ -76,9 +77,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
         onClick={(event) => event.stopPropagation()}
       >
         <div className='flex items-center justify-between gap-4 border-b border-line px-4 py-3 dark:border-line-dark'>
-          <h2 className='truncate text-sm font-semibold text-ink dark:text-ink-dark'>
-            {project.title}
-          </h2>
+          <h2 className='truncate text-sm font-semibold text-ink dark:text-ink-dark'>{project.title}</h2>
           <button
             ref={closeButtonRef}
             type='button'
@@ -95,12 +94,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             alt={project.title}
             className='mx-auto max-h-[55vh] w-auto rounded-xl object-contain'
           />
-          <h3 className='mt-4 text-lg font-bold text-ink dark:text-ink-dark'>
-            {project.title}
-          </h3>
-          <p className='mt-2 text-sm leading-relaxed text-ink dark:text-ink-dark-soft'>
-            {project.description}
-          </p>
+          <p className='mt-2 text-sm leading-relaxed text-ink dark:text-ink-dark-soft'>{project.description}</p>
           {project.url ? (
             <a
               href={project.url}
@@ -114,6 +108,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           ) : null}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

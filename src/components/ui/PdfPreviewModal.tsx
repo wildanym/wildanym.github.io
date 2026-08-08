@@ -1,5 +1,6 @@
 import { Download, X } from "lucide-react";
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 
 interface PdfPreviewModalProps {
   url: string | null;
@@ -63,7 +64,7 @@ export function PdfPreviewModal({ url, title, onClose, download }: PdfPreviewMod
 
   if (!url) return null;
 
-  return (
+  return createPortal(
     <div
       className='animate-modal-backdrop fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm'
       onClick={onClose}
@@ -77,9 +78,7 @@ export function PdfPreviewModal({ url, title, onClose, download }: PdfPreviewMod
         onClick={(event) => event.stopPropagation()}
       >
         <div className='flex items-center justify-between gap-4 border-b border-line px-4 py-3 dark:border-line-dark'>
-          <h2 className='truncate text-sm font-semibold text-ink dark:text-ink-dark'>
-            {title ?? "Preview PDF"}
-          </h2>
+          <h2 className='truncate text-sm font-semibold text-ink dark:text-ink-dark'>{title ?? "Preview PDF"}</h2>
           <div className='flex items-center gap-2'>
             {download ? (
               <a
@@ -102,12 +101,9 @@ export function PdfPreviewModal({ url, title, onClose, download }: PdfPreviewMod
             </button>
           </div>
         </div>
-        <iframe
-          src={url}
-          title={title ?? "Preview PDF"}
-          className='min-h-[60vh] w-full flex-1 bg-white'
-        />
+        <iframe src={url} title={title ?? "Preview PDF"} className='min-h-[60vh] w-full flex-1 bg-white' />
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
