@@ -72,6 +72,7 @@ export function ProfileSection() {
               ) : null}
               <h1 className='text-2xl font-bold tracking-tight text-heading text-balance sm:text-5xl'>
                 {PROFILE.name}
+                <span className='sr-only'> Muhammad</span>
               </h1>
               <p className='mt-1 text-sm font-medium text-brand-600 sm:text-lg dark:text-brand-400'>{PROFILE.role}</p>
               {PROFILE.isOpenToWork ? (
