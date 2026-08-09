@@ -146,7 +146,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       { name: "Jest" },
       { name: "Git" },
       { name: "Visual Studio Code" },
-      { name: "AI Vibe code" },
+      { name: "Vibe coding" },
       { name: "Agile Methodology" },
     ],
   },

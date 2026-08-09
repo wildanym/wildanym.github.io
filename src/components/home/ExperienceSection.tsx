@@ -115,13 +115,15 @@ export function ExperienceSection() {
                           onClick={() => setSelectedProject(project)}
                           className='group text-left'
                         >
-                          <img
-                            src={project.imageUrl}
-                            alt={project.title}
-                            loading='lazy'
-                            decoding='async'
-                            className='aspect-video w-full rounded-lg border border-line object-cover transition-transform duration-200 group-hover:scale-[1.02] group-hover:border-brand-300 dark:border-line-dark dark:group-hover:border-brand-400'
-                          />
+                          <div className='aspect-video w-full overflow-hidden rounded-lg border border-line will-change-transform transition-[transform,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.02] group-hover:border-brand-300 dark:border-line-dark dark:group-hover:border-brand-400 transition-all'>
+                            <img
+                              src={project.imageUrl}
+                              alt={project.title}
+                              loading='lazy'
+                              decoding='async'
+                              className='h-full w-full scale-[1.15] object-cover transition-transform duration-500 ease-out group-hover:scale-100'
+                            />
+                          </div>
                           <span className='mt-1.5 line-clamp-1 block text-xs font-medium text-ink-soft group-hover:text-heading dark:text-ink-dark-soft dark:group-hover:text-heading'>
                             {project.title}
                           </span>
