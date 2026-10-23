@@ -16,7 +16,6 @@ export function MainLayout() {
       >
         Lompat ke konten utama
       </a>
-      <BackgroundMotif />
       <Header />
       <main id='main' className='flex-1'>
         <Suspense
